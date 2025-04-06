@@ -37,7 +37,7 @@ h1 {
   color: var(--text-white);
   padding: 20px;
   border-radius: 15px;
-  margin: 20px 0 10px; /* Reduced bottom margin to fit last-updated */
+  margin: 20px 0 10px;
   font-size: 2.8rem;
   letter-spacing: 2px;
   text-transform: uppercase;
@@ -48,17 +48,17 @@ h1 {
   text-align: center;
   color: var(--text-color);
   font-size: 1rem;
-  margin: 0 0 10px 0; /* Adjusted margin to fit disclaimer below */
+  margin: 0 0 10px 0;
   font-style: italic;
-  display: block; /* Ensure it’s not hidden */
-  animation: blink 2s infinite; /* Continuous blinking, slower speed */
+  display: block;
+  animation: blink 2s infinite !important; /* Force blinking */
 }
 
 .disclaimer {
   text-align: center;
-  color: var(--accent-color); /* Warm red for emphasis */
+  color: var(--accent-color) !important; /* Force red color */
   font-size: 1rem;
-  margin: 10px 0 40px 0; /* Space it out from last-updated and container */
+  margin: 10px 0 40px 0;
   font-style: italic;
   font-weight: 500;
 }
@@ -168,7 +168,7 @@ li:before {
   margin-bottom: 20px;
   font-size: 1.5rem;
   font-weight: 600;
-  display: block; /* Ensure visibility */
+  display: block;
 }
 
 .download-section .download-btn {
@@ -263,11 +263,12 @@ footer .heart {
   }
 
   .last-updated {
-    color: #ecf0f1;
+    color: #ecf0f1 !important; /* Light gray for dark mode */
+    animation: blink 2s infinite !important; /* Ensure blinking */
   }
 
   .disclaimer {
-    color: #e74c3c; /* Keep it red for visibility in dark mode */
+    color: #e74c3c !important; /* Keep red in dark mode */
   }
 }
 
@@ -294,9 +295,16 @@ footer .heart {
     flex-direction: column;
   }
 
+  .last-updated {
+    font-size: 0.9rem;
+    margin: 0 0 10px 0;
+    animation: blink 2s infinite !important; /* Ensure blinking */
+  }
+
   .disclaimer {
     font-size: 0.9rem;
     margin: 10px 0 30px 0;
+    color: var(--accent-color) !important; /* Force red color */
   }
 }
 
