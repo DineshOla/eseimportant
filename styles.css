@@ -237,6 +237,7 @@ footer .heart {
   color: #e74c3c;
 }
 
+ 
 @media print {
   body {
     display: none !important;
