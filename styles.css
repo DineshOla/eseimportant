@@ -54,6 +54,18 @@ h1 {
   animation: blink 2s infinite !important; /* Force blinking */
 }
 
+.bealert {
+  text-align: center;
+  color: var(--primary-color) !important; /* Vibrant green */
+  font-size: 1rem;
+  margin: 0 0 10px 0;
+  font-weight: 500;
+  padding: 10px;
+  background: #e8f5e9; /* Light green background */
+  border-radius: 8px;
+  box-shadow: var(--shadow);
+}
+
 .disclaimer {
   text-align: center;
   color: var(--accent-color) !important; /* Force red color */
@@ -194,6 +206,102 @@ li:before {
   cursor: not-allowed;
 }
 
+/* Image Section */
+.image-section {
+  background: #ffffff;
+  padding: 25px;
+  border-radius: 15px;
+  box-shadow: var(--shadow);
+  border-left: 5px solid var(--primary-color);
+  margin-top: 30px;
+}
+
+.image-section h3 {
+  color: var(--text-color);
+  border-bottom: 2px solid var(--primary-color);
+  padding-bottom: 10px;
+  margin-bottom: 20px;
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.gallery {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.gallery-img {
+  width: 150px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 8px;
+  transition: transform 0.3s;
+  cursor: pointer;
+}
+
+.gallery-img:hover {
+  transform: scale(1.05);
+}
+
+.gallery-message {
+  margin-top: 20px;
+  padding: 15px;
+  background: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.gallery-message p {
+  font-size: 1.2rem;
+  line-height: 1.8;
+  color: var(--text-color);
+  text-align: left;
+}
+
+.gallery-message strong {
+  color: var(--accent-color);
+  font-size: 1.4rem;
+}
+
+/* Lightbox Styles */
+.lightbox {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.lightbox.active {
+  display: flex;
+}
+
+.lightbox-content {
+  max-width: 90%;
+  max-height: 90%;
+  border-radius: 8px;
+}
+
+.close-btn {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  color: var(--text-white);
+  font-size: 2rem;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.close-btn:hover {
+  color: var(--accent-color);
+}
+
 /* Footer Styles */
 footer {
   background: var(--footer-bg);
@@ -237,7 +345,6 @@ footer .heart {
   color: #e74c3c;
 }
 
- 
 @media print {
   body {
     display: none !important;
@@ -250,16 +357,11 @@ footer .heart {
     color: #ecf0f1;
   }
 
-  .subject {
+  .subject, .download-section, .image-section {
     background: #2f4050;
   }
 
-  .download-section {
-    background: #2f4050;
-  }
-
-  h2,
-  .download-section h3 {
+  h2, .download-section h3, .image-section h3 {
     color: #ecf0f1;
   }
 
@@ -268,8 +370,21 @@ footer .heart {
     animation: blink 2s infinite !important; /* Ensure blinking */
   }
 
+  .bealert {
+    color: var(--secondary-color) !important; /* Keep white in dark mode */
+    background: #c92530; /* Darker background for contrast */
+  }
+
   .disclaimer {
     color: #e74c3c !important; /* Keep red in dark mode */
+  }
+
+  .gallery-message {
+    background: #34495e;
+  }
+
+  .gallery-message p {
+    color: #ecf0f1;
   }
 }
 
@@ -284,11 +399,7 @@ footer .heart {
     font-size: 2rem;
   }
 
-  .subject {
-    padding: 15px;
-  }
-
-  .download-section {
+  .subject, .download-section, .image-section {
     padding: 15px;
   }
 
@@ -302,31 +413,36 @@ footer .heart {
     animation: blink 2s infinite !important; /* Ensure blinking */
   }
 
+  .bealert {
+    font-size: 0.9rem;
+    margin: 0 0 10px 0;
+    color: var(--primary-color) !important; /* Force green color */
+  }
+
   .disclaimer {
     font-size: 0.9rem;
     margin: 10px 0 30px 0;
     color: var(--accent-color) !important; /* Force red color */
   }
+
+  Mika
+  .gallery-message p {
+    font-size: 1rem;
+  }
+
+  .gallery-message strong {
+    font-size: 1.2rem;
+  }
 }
 
 /* Animations */
 @keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 
 @keyframes blink {
-  0% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
+  0% { opacity: 1; }
+  50% { opacity: 0; }
+  100% { opacity: 1; }
 }
