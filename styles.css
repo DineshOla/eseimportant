@@ -416,7 +416,7 @@ footer .heart {
   .bealert {
     font-size: 0.9rem;
     margin: 0 0 10px 0;
-    color: var(--primary-color) !important; /* Force green color */
+    color: var(--secondary-color) !important; /* Force green color */
   }
 
   .disclaimer {
