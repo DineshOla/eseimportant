@@ -1,48 +1,46 @@
-// Toggle Functionality for Subject Sections
-document.querySelectorAll('.toggle-btn').forEach(button => {
+document.addEventListener('DOMContentLoaded', () => {
+  // Toggle functionality for subject questions and coming-soon
+  document.querySelectorAll('.toggle-btn').forEach(button => {
     button.addEventListener('click', () => {
-      const subjectDiv = button.parentElement.parentElement;
-      const content = subjectDiv.querySelector('ol, .coming-soon');
-      const isActive = content.classList.contains('active');
-  
-      // Toggle the active class
-      content.classList.toggle('active');
-  
-      // Update button arrow
-      button.textContent = isActive ? '▼' : '▲';
+      const subject = button.closest('.subject');
+      const list = subject.querySelector('ol');
+      const comingSoon = subject.querySelector('.coming-soon');
+
+      // Toggle ordered list if it exists (for BDA, DAA, etc.)
+      if (list) {
+        list.classList.toggle('active');
+        button.querySelector('i').classList.toggle('fa-chevron-down');
+        button.querySelector('i').classList.toggle('fa-chevron-up');
+      }
+      // Toggle coming-soon if it exists (for SEGC)
+      if (comingSoon) {
+        comingSoon.classList.toggle('active');
+        button.querySelector('i').classList.toggle('fa-chevron-down');
+        button.querySelector('i').classList.toggle('fa-chevron-up');
+      }
     });
   });
-  
-  // Lightbox Functionality
-  const lightbox = document.getElementById('lightbox');
-  const lightboxImg = document.getElementById('lightbox-img');
+
+  // Lightbox functionality
+  const galleryImg = document.querySelector('.gallery-img');
+  const lightbox = document.querySelector('.lightbox');
+  const lightboxContent = document.querySelector('.lightbox-content');
   const closeBtn = document.querySelector('.close-btn');
-  const galleryLinks = document.querySelectorAll('.lightbox-link');
-  
-  galleryLinks.forEach(link => {
-    link.addEventListener('click', (e) => {
-      e.preventDefault();
-      lightboxImg.src = link.href;
+
+  if (galleryImg && lightbox && lightboxContent && closeBtn) {
+    galleryImg.addEventListener('click', () => {
+      lightboxContent.src = galleryImg.src;
       lightbox.classList.add('active');
     });
-  });
-  
-  closeBtn.addEventListener('click', () => {
-    lightbox.classList.remove('active');
-  });
-  
-  // Close lightbox when clicking outside the image
-  lightbox.addEventListener('click', (e) => {
-    if (e.target === lightbox) {
+
+    closeBtn.addEventListener('click', () => {
       lightbox.classList.remove('active');
-    }
-  });
-  
-  // Scroll Up Functionality
-  document.querySelector('a[aria-label="Scroll Up"]').addEventListener('click', (e) => {
-    e.preventDefault();
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth'
     });
-  });
+
+    lightbox.addEventListener('click', (e) => {
+      if (e.target === lightbox) {
+        lightbox.classList.remove('active');
+      }
+    });
+  }
+});
